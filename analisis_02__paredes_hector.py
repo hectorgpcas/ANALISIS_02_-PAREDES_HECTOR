@@ -235,7 +235,7 @@ plt.show()
 """
 
 #Se suman valores totales según país de destino de importación
-value_imp=df_imp.groupby('destination')['total_value'].sum()
+value_imp=df_imp.groupby('origin')['total_value'].sum()
 
 #Se conviertan datos a formato DataFrame
 value_imp=pd.DataFrame(value_imp)
@@ -312,7 +312,7 @@ plt.xticks(fontsize=25, color='black', fontweight="bold")
 plt.yticks(fontsize=25, color='black', fontweight="bold")
 plt.legend([])
 for i in range(0, len(o)):
-  plt.annotate(o.iloc[i,0], xy=(o.iloc[i,0]-1.2, i-0.1), color='white', fontsize=30, fontweight="bold")
+  plt.annotate(o.iloc[i,0], xy=(o.iloc[i,0]-1, i-0.1), color='white', fontsize=30, fontweight="bold")
 plt.show()
 
 """## Analisis Exportación"""
@@ -399,39 +399,39 @@ plt.xticks(fontsize=25, color='black', fontweight="bold")
 plt.yticks(fontsize=25, color='black', fontweight="bold")
 plt.legend([])
 for i in range(0, len(o)):
-  plt.annotate(o.iloc[i,0], xy=(o.iloc[i,0]-2.5, i-0.1), color='white', fontsize=25, fontweight="bold")
+  plt.annotate(o.iloc[i,0], xy=(o.iloc[i,0]-2.8, i-0.1), color='white', fontsize=30, fontweight="bold")
 plt.show()
 
 """#Análisis por año"""
 
-#Se suman valores totales por cliente de la lista general
+#Se suman valores totales por año de la lista de importaciones
 value_year_imp = df_imp.groupby('year')['total_value'].sum()
 
 #Se conviertan datos a formato DataFrame
 value_year_imp = pd.DataFrame(value_year_imp)
 
-#Se ordenan clientes según sus valores de importación de mayor a menor
+#Se ordenan años del más antiguo al más reciente
 value_year_imp = value_year_imp.sort_values(by=['year'], ascending=True)
 
-#Se renombran columnas de cliente y valor
+#Se renombran columnas de año y valor total
 value_year_imp.columns = ['Valor (Bill $)']
 
-#Se convierte valor total de cada cliente a billones
+#Se convierte valor total de cada año a billones
 value_year_imp['Valor (Bill $)'] = round(value_year_imp['Valor (Bill $)']/1000000000, 2)
 
-#Se suman valores totales por cliente de la lista general
+#Se suman valores totales por año de la lista de exportaciones
 value_year_exp = df_exp.groupby('year')['total_value'].sum()
 
 #Se conviertan datos a formato DataFrame
 value_year_exp = pd.DataFrame(value_year_exp)
 
-#Se ordenan clientes según sus valores de importación de mayor a menor
+#Se ordenan años del más antiguo al más reciente
 value_year_exp = value_year_exp.sort_values(by=['year'], ascending=True)
 
-#Se renombran columnas de cliente y valor
+#Se renombran columnas de año y valor total
 value_year_exp.columns = ['Valor (Bill $)']
 
-#Se convierte valor total de cada cliente a billones
+#Se convierte valor total de cada año a billones
 value_year_exp['Valor (Bill $)'] = round(value_year_exp['Valor (Bill $)']/1000000000, 2)
 
 """## Importaciones por año"""
@@ -455,7 +455,7 @@ plt.xticks(fontsize=25, color='black', fontweight="bold")
 plt.yticks(fontsize=25, color='black', fontweight="bold")
 plt.legend([])
 for i in range(0, len(value_year_imp)):
-  plt.annotate(value_year_imp.iloc[i,0], xy=(i-0.1, value_year_imp.iloc[i,0]+0.1), color='black', fontsize=25, fontweight="bold")
+  plt.annotate(value_year_imp.iloc[i,0], xy=(i-0.12, value_year_imp.iloc[i,0]+0.1), color='black', fontsize=30, fontweight="bold")
 plt.show()
 
 """## Exportaciones por año"""
@@ -479,7 +479,7 @@ plt.xticks(fontsize=25, color='black', fontweight= 'bold')
 plt.yticks(fontsize=25, color='black', fontweight= 'bold')
 plt.legend([])
 for i in range(0, len(value_year_exp)):
-  plt.annotate(value_year_exp.iloc[i,0], xy=(i-0.13, value_year_exp.iloc[i,0]+0.2), color='black', fontsize=25, fontweight= 'bold')
+  plt.annotate(value_year_exp.iloc[i,0], xy=(i-0.13, value_year_exp.iloc[i,0]+0.2), color='black', fontsize=30, fontweight= 'bold')
 plt.show()
 
 """# Analisis de clientes"""
